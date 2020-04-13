@@ -97,7 +97,9 @@ app.post("/repositories/:id/like", (request, response) => {
   const totalLikes = likes.filter((like) => like.id === repository.id && like)
     .length;
 
-  return response.json({ likes: totalLikes });
+  repository.likes = totalLikes;
+
+  return response.json(repository);
 });
 
 module.exports = app;
